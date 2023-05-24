@@ -21,7 +21,7 @@ Everyone in the team should then clone this fork to their local machine to work 
 
 # Create a test and development database
 ; createdb YOUR_PROJECT_NAME
-; createdb YOUR_PROJECT_NAME_test
+; createdb YOUR_PROJECT_NAME_TEST
 
 # Open lib/database_connection.py and change the database names
 ; open lib/database_connection.py
