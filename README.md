@@ -31,5 +31,6 @@ Everyone in the team should then clone this fork to their local machine to work 
 
 # Run the app
 ; python app.py
-# Now visit http://localhost:5000/emoji in your browser
+
+# Now visit http://localhost:5000/index in your browser
 ```
