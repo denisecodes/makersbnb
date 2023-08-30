@@ -1,26 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Makersbnb - Sign Up</title>
-</head>
-<body>
-    <h1>Sign Up</h1>
-    <form action=“/sign_up” method=“POST”>
-        {% if errors %}
-        <p class=“t-errors”>
-            Your submission contains errors:
-            {{ errors | join(‘, ’) }}
-        </p>
-        {% endif %}
-        <label for=“first_name”>First Name</label>
-        <input placeholder=“example: Jane” type=“text” name=“first_name” id=“first_name”>
-        <label for=“last_name”>Last Name</label>
-        <input placeholder=“example: Doe" type=“text” name=“last_name” id=“last_name”>
-        <label for=“email_address”>Email Address</label>
-        <input placeholder=“example: jane.doe@example.com” type=“text” name=“email_address” id=“email_address”>
-        <input style=“color: white; background-color: darkolivegreen; font-size: 15px;” type=“submit” value=“Add album”>
-    </form>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Makersbnb - Sign Up</title>
+        <style type="text/css">
+            /** This is CSS, it is used for styling the page **/
+            body {
+                background-color: white;
+                color: darkolivegreen;
+                font-size: 1.5em;
+                margin: 2rem;
+            }
+            form {
+                display: flex;
+                flex-direction: column;
+                max-width: 15em;
+            }
+            input {
+                padding: 4px;
+                margin: 10px;
+            }
+            label {
+                padding-left: 15px;
+                font-size: 1em;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Sign Up to MakerBnB</h1>
+        <form action="/sign_up" method="POST">
+            <label for="first_name">First Name</label>
+            <input placeholder="example: Jane" type="text" name="first_name" id="first_name">
+            <label for="last_name">Last Name</label>
+            <input placeholder="example: Doe" type="text" name="last_name" id="last_name">
+            <label for="email_address">Email Address</label>
+            <input placeholder="example: jane.doe@example.com" type="text" name="email_address" id="email_address">
+            <label for="user_password">Password</label>
+            <input type="text" name="user_password" id="user_password">
+
+            <input class="button" style="color: white; background-color: darkolivegreen; font-size: 15px;" type="submit" value="Sign Up">
+        </form>
+    </body>
 </html>

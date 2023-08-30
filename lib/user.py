@@ -7,8 +7,6 @@ class User:
         self.user_password = user_password
 
     def __eq__(self, other):
-        print("self", self.__dict__)
-        print("other", other.__dict__)
         return self.__dict__ == other.__dict__
 
     def __repr__(self):
