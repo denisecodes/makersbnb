@@ -39,3 +39,4 @@ def test_go_to_sign_up(page, test_web_address, db_connection):
     assert user["last_name"] == "Chan"
     assert user["email_address"] == "denise@gmail.com"
     assert user["user_password"] == "28374663alal"
+
