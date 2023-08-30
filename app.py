@@ -11,7 +11,7 @@ app = Flask(__name__)
 # Returns the homepage
 # Try it:
 #   ; open http://localhost:5000/index
-@app.route('/index', methods=['GET'])
+@app.route('/', methods=['GET'])
 def get_home():
     return render_template('index.html')
 
