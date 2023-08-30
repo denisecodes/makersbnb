@@ -14,3 +14,24 @@ def test_get_index(page, test_web_address):
 
     # We assert that it has the text "This is the homepage."
     expect(strong_tag).to_have_text("This is the homepage.")
+
+
+# """
+# Test that when the user logs in correctly, they are taken to the listings page
+# """
+
+# def test_correct_login(db_connection, page, test_web_address):
+#     db_connection.seed('seeds/users.sql')
+
+"""
+Test that user can login when correct information inputted
+"""
+
+def test_correct_login(db_connection, page, test_web_address):
+    db_connection.seed('seeds/users.sql')
+    page.goto(f"https://{test_web_address}/login")
+    page.fill("input[name=email_address]", 'email1@gmail.com')
+    page.fill("input[name=user_password]", '12345')
+    page.click("text='Login'")
+    spaces_page = page.locator("p")
+    expect(spaces_page).to_have_text("This is the spaces page.")
