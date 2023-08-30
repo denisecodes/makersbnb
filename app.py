@@ -18,15 +18,26 @@ def get_index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def get_login():
-    connection = get_flask_database_connection(app)
-    repository = UserRepository(connection)
-    email_address = request.form["email_address"]
-    user_password = request.form["user_password"]
-    login_status = repository.validate_login(email_address, user_password)
-    if login_status == True:
-        return redirect('/spaces')
+    if request.method == 'GET':
+        return render_template('login.html')
+    elif request.method == 'POST':
+        connection = get_flask_database_connection(app)
+        repository = UserRepository(connection) 
+        email_address = request.form["email_address"]
+        user_password = request.form["user_password"]
+        login_status = repository.validate_login(email_address, user_password)
+        if login_status == True:
+            return redirect('/spaces')
+    
+# @app.route('/', methods=['GET', 'POST'])
+# def index():
+#     if request.method == 'GET':
+#         return "This is a GET request"
+#     elif request.method == 'POST':
+#         return "This is a POST request"
     
     
+
 
 # @app.route('/spaces', methods=['GET','POST'])
 # def  get_spaces_if_login_successful():
