@@ -3,6 +3,7 @@ from flask import Flask, request, render_template, redirect
 from lib.database_connection import get_flask_database_connection
 from lib.user import User
 from lib.user_repository import UserRepository
+from lib.user_parameters_validator import UserParametersValidator
 
 # Create a new Flask app
 app = Flask(__name__)
@@ -24,13 +25,26 @@ def get_sign_up():
 @app.route('/sign_up', methods=['POST'])
 def add_user():
     connection = get_flask_database_connection(app)
-    user = User(
+    repo = UserRepository(connection)
+
+    validator = UserParametersValidator(
         request.form["first_name"],
         request.form["last_name"],
         request.form["email_address"],
         request.form["user_password"]
     )
-    repo = UserRepository(connection)
+    
+    if not validator.is_valid():
+        errors = validator.generate_errors()
+        return render_template("sign_up.html", errors=errors)
+
+    user = User(
+        validator.get_valid_first_name(),
+        validator.get_valid_last_name(),
+        validator.get_valid_email_address(),
+        validator.get_valid_user_password()
+    )
+
     repo.add(user)
     return redirect(f"/index")
 

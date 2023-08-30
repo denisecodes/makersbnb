@@ -22,7 +22,7 @@ def test_go_to_sign_up(page, test_web_address, db_connection):
     db_connection.seed("seeds/users.sql")
     page.goto(f"http://{test_web_address}/sign_up")
     title = page.locator("h1")
-    expect(title).to_have_text("Sign Up to MakerBnB")
+    expect(title).to_have_text("Sign Up to MakersBnB")
 
     page.fill("input[name='first_name']", "Denise")
     page.fill("input[name='last_name']", "Chan")
@@ -40,3 +40,17 @@ def test_go_to_sign_up(page, test_web_address, db_connection):
     assert user["email_address"] == "denise@gmail.com"
     assert user["user_password"] == "28374663alal"
 
+def test_validate_user(page, test_web_address, db_connection):
+    db_connection.seed('seeds/users.sql')
+    page.goto(f"http://{test_web_address}/sign_up")
+
+    page.click("text='Sign Up'")
+
+    errors_tag = page.locator(".t-errors")
+    expect(errors_tag).to_have_text(
+        "Your submission contains errors: "
+        "First name must not be blank, " \
+        "Last name must not be blank, " \
+        "Email address must not be blank, " \
+        "Password must not be blank"
+    )

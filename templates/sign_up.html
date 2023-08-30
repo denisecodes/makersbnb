@@ -25,19 +25,29 @@
                 padding-left: 15px;
                 font-size: 1em;
             }
+            .t-errors {
+                color: red;
+                font-size: .7em;
+            }
         </style>
     </head>
     <body>
-        <h1>Sign Up to MakerBnB</h1>
+        <h1>Sign Up to MakersBnB</h1>
         <form action="/sign_up" method="POST">
+            {% if errors %}
+                <p class="t-errors">
+                    Your submission contains errors:
+                    {{ errors | join(', ') }}
+                </p>
+            {% endif %}
             <label for="first_name">First Name</label>
             <input placeholder="example: Jane" type="text" name="first_name" id="first_name">
             <label for="last_name">Last Name</label>
             <input placeholder="example: Doe" type="text" name="last_name" id="last_name">
             <label for="email_address">Email Address</label>
-            <input placeholder="example: jane.doe@example.com" type="text" name="email_address" id="email_address">
+            <input placeholder="example: jane.doe@example.com" type="email" name="email_address" id="email_address">
             <label for="user_password">Password</label>
-            <input type="text" name="user_password" id="user_password">
+            <input type="password" name="user_password" id="user_password">
 
             <input class="button" style="color: white; background-color: darkolivegreen; font-size: 15px;" type="submit" value="Sign Up">
         </form>
