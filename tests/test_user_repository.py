@@ -34,3 +34,4 @@ def test_add_a_new_user(db_connection):
         User(6, 'Mohsin', 'Hafesji', 'email6@gmail.com', '98dfb'),
         User(7, "Roberto", "Quadraccia", 'roberto@gmail.com', "robertoisawesome123")
     ]
+    
