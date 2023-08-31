@@ -16,6 +16,10 @@ app = Flask(__name__)
 def get_index():
     return render_template('index.html')
 
+@app.route('/spaces', methods=['GET'])
+def get_spaces():
+    return render_template('spaces.html')
+
 @app.route('/login', methods=['GET', 'POST'])
 def get_login():
     if request.method == 'GET':
@@ -28,6 +32,8 @@ def get_login():
         login_status = repository.validate_login(email_address, user_password)
         if login_status == True:
             return redirect('/spaces')
+        else:
+            return redirect('/login')
     
 # @app.route('/', methods=['GET', 'POST'])
 # def index():
