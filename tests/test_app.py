@@ -25,8 +25,10 @@ def test_correct_login(db_connection, page, test_web_address):
     page.fill("input[name=email_address]", 'email1@gmail.com')
     page.fill("input[name=user_password]", '12345')
     page.click("text='Click here to login'")
-    spaces_page = page.locator("p")
-    expect(spaces_page).to_have_text("This is the spaces page.")
+    spaces_page = page.locator(".spaces_page_title")
+    print(page.content())
+    print(page.url)
+    expect(spaces_page).to_have_text("Spaces")
 
 
 """
@@ -68,10 +70,10 @@ def test_go_to_sign_up(page, test_web_address, db_connection):
     page.fill("input[name='first_name']", "Denise")
     page.fill("input[name='last_name']", "Chan")
     page.fill("input[name='email_address']", "denise@gmail.com")
-    page.fill("input[name='user_password']", "28374663alal")
+    page.fill("input[name='user_password']", "12345")
     
     page.click("text='Sign Up'")
-    strong_tag = page.locator("p")
+    strong_tag = page.locator(".homepage")
     expect(strong_tag).to_have_text("This is the homepage.")
     row = db_connection.execute("SELECT * FROM users ORDER BY id DESC LIMIT 1")
     user = row[0]
@@ -79,7 +81,7 @@ def test_go_to_sign_up(page, test_web_address, db_connection):
     assert user["first_name"] == "Denise"
     assert user["last_name"] == "Chan"
     assert user["email_address"] == "denise@gmail.com"
-    assert user["user_password"] == "28374663alal"
+    assert user["user_password"] == "12345"
 
 def test_validate_user(page, test_web_address, db_connection):
     db_connection.seed('seeds/users.sql')
@@ -98,8 +100,9 @@ def test_validate_user(page, test_web_address, db_connection):
 def test_get_login(page, test_web_address):
     page.goto(f"http://{test_web_address}/")
     page.click("text=Login")
-    login_tag = page.locator("p")
-    expect(login_tag).to_have_text("This is the login page.")
+    login_tag = page.locator(".login_header")
+    expect(login_tag).to_have_text("Login")
+
 
 def test_get_spaces_from_login_page(page, test_web_address):
     page.goto(f"http://{test_web_address}/new")

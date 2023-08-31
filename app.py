@@ -26,7 +26,7 @@ def get_index():
         # - if login is valid, redirects to spaces page
         # - if login is invalid, redirects to login page, and displays an error
 @app.route('/login', methods=['GET', 'POST'])
-def get_login():
+def get_post_login_page():
     if request.method == 'GET':
         return render_template('login.html')
     elif request.method == 'POST':
@@ -36,9 +36,11 @@ def get_login():
         user_password = request.form["user_password"]
         login_status = repository.validate_login(email_address, user_password)
         if login_status:
-            return redirect('/spaces')
+            repository1 = SpacesRepository(connection)
+            spaces = repository1.all()
+            return render_template('spaces.html', spaces=spaces)
         else:
-            return render_template("login.html", error="Please submit valid login.")
+            return render_template('login.html', error="Please submit valid login.")
 
 @app.route('/sign_up', methods=['GET'])
 def get_sign_up():

@@ -18,5 +18,5 @@ def test_equality_user():
     assert new_user1 == new_user2
 
 def test_representation_user():
-    new_user1 = User("Alina", "Ermakova", "alalina@hmail.com", "123456789lala", 1)
-    assert str(new_user1) == "Alina Ermakova, alalina@hmail.com, 123456789lala"
+    new_user1 = User("Alina", "Ermakova", "alalina@hmail.com", "12345", 1)
+    assert str(new_user1) == "User(1, Alina, Ermakova, alalina@hmail.com, 12345)"
