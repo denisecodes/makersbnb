@@ -1,8 +1,12 @@
 import os
 from flask import Flask, request, render_template, redirect, url_for
 from lib.database_connection import get_flask_database_connection
+from lib.user import User
+from lib.user_repository import UserRepository
+from lib.user_parameters_validator import UserParametersValidator
 from lib.spaces import Spaces
 from lib.spaces_repository import SpacesRepository
+
 
 # Create a new Flask app
 app = Flask(__name__)
@@ -11,24 +15,44 @@ app = Flask(__name__)
 
 # GET /index
 # Returns the homepage
-# Try it:
-#   ; open http://localhost:5000/
 @app.route('/', methods=['GET'])
 def get_index():
     return render_template('index.html')
 
-# GET /new
-# Returns the login page
-# Try it:
-#   ; open http://localhost:5000/index
+@app.route('/sign_up', methods=['GET'])
+def get_sign_up():
+    return render_template('sign_up.html')
+
+@app.route('/sign_up', methods=['POST'])
+def add_user():
+    connection = get_flask_database_connection(app)
+    repo = UserRepository(connection)
+
+    validator = UserParametersValidator(
+        request.form["first_name"],
+        request.form["last_name"],
+        request.form["email_address"],
+        request.form["user_password"]
+    )
+    
+    if not validator.is_valid():
+        errors = validator.generate_errors()
+        return render_template("sign_up.html", errors=errors)
+
+    user = User(
+        validator.get_valid_first_name(),
+        validator.get_valid_last_name(),
+        validator.get_valid_email_address(),
+        validator.get_valid_user_password()
+    )
+
+    repo.add(user)
+    return redirect(f"/")
+
 @app.route('/new', methods=['GET'])
 def get_login():
     return render_template('new.html')
 
-# GET /requests
-# Returns the requests page
-# Try it:
-#   ; open http://localhost:5000/spaces
 @app.route('/requests', methods=['GET'])
 def get_requests():
     return render_template('requests.html')
@@ -61,4 +85,4 @@ def post_new_space():
 # They also start the server configured to use the test database
 # if started in test mode.
 if __name__ == '__main__':
-    app.run(debug=True, port=int(os.environ.get('PORT', 5000)))
+    app.run(debug=True, port=int(os.environ.get('PORT', 8000)))
