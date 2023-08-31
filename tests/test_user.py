@@ -1,11 +1,11 @@
 from lib.user import *
 
 """
-Check that when initialising with certain properties 
+Check that when initialising User class to login with certain properties 
 We can access those properties 
 """
 
-def test_initialises():
+def test_initialises_for_login():
     user1 = User(1, 'Ellie', 'Priestley', 'email1@gmail.com', '12345')
     assert user1.id == 1
     assert user1.first_name == 'Ellie'
@@ -15,20 +15,20 @@ def test_initialises():
 
 
 """
-Check that two instances with the same properties 
+Check that two instances with the same properties in User class for login
 Are defined as equal 
 """
 
-def test_equality():
+def test_equality_for_login():
     user1 = User(1, 'Ellie', 'Priestley', 'email1@gmail.com', '12345')
     user2 = User(1, 'Ellie', 'Priestley', 'email1@gmail.com', '12345')
     assert user1 == user2
 
 """
-Check that instances format nicely 
+Check that instances format nicely in User class for login
 """
 
-def test_format():
+def test_format_for_login():
     user1 = User(1, 'Ellie', 'Priestley', 'email1@gmail.com', '12345')
     assert str(user1) == 'User(1, Ellie, Priestley, email1@gmail.com, 12345)'
 

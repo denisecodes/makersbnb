@@ -17,7 +17,7 @@ def test_get_index(page, test_web_address):
 
 
 """
-Test that user can login when correct information inputted
+Test that user can login when correct information inputted 
 """
 
 def test_correct_login(db_connection, page, test_web_address):
@@ -43,3 +43,16 @@ def test_incorrect_login(db_connection, page, test_web_address):
     invalid_login_error = page.locator(".login_error")
     expect(invalid_login_error).to_have_text("Please submit valid login.")
     
+"""
+Test that if a user leaves fields empty in login page
+An error message will be produced 
+"""
+
+def test_empty_fields_login(db_connection, page, test_web_address):
+    db_connection.seed('seeds/users.sql')
+    page.goto(f"http://{test_web_address}/login")
+    page.fill("input[name=email_address]", '')
+    page.fill("input[name=user_password]", '')
+    page.click("text='Click here to login'")
+    invalid_login_error = page.locator(".login_error")
+    expect(invalid_login_error).to_have_text("Please submit valid login.")
