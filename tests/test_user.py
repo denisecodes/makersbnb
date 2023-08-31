@@ -1,35 +1,22 @@
 from lib.user import *
 
-"""
-Check that when initialising User class to login with certain properties 
-We can access those properties 
-"""
-
-def test_initialises_for_login():
-    user1 = User(1, 'Ellie', 'Priestley', 'email1@gmail.com', '12345')
-    assert user1.id == 1
-    assert user1.first_name == 'Ellie'
-    assert user1.last_name == 'Priestley'
-    assert user1.email_address == 'email1@gmail.com'
-    assert user1.user_password == '12345'
-
-
-"""
-Check that two instances with the same properties in User class for login
-Are defined as equal 
+"""   
+Initiallizing new user
 """
 
-def test_equality_for_login():
-    user1 = User(1, 'Ellie', 'Priestley', 'email1@gmail.com', '12345')
-    user2 = User(1, 'Ellie', 'Priestley', 'email1@gmail.com', '12345')
-    assert user1 == user2
+def test_new_user():
+    new_user = User("Alina", "Ermakova", "alalina@hmail.com", "123456789lala", 1)
+    assert new_user.id == 1
+    assert new_user.first_name == "Alina"
+    assert new_user.last_name == "Ermakova"
+    assert new_user.email_address == "alalina@hmail.com"
+    assert new_user.user_password == "123456789lala"
 
-"""
-Check that instances format nicely in User class for login
-"""
+def test_equality_user():
+    new_user1 = User(1, "Alina", "Ermakova", "alalina@hmail.com", "123456789lala")
+    new_user2 = User(1, "Alina", "Ermakova", "alalina@hmail.com", "123456789lala")
+    assert new_user1 == new_user2
 
-def test_format_for_login():
-    user1 = User(1, 'Ellie', 'Priestley', 'email1@gmail.com', '12345')
-    assert str(user1) == 'User(1, Ellie, Priestley, email1@gmail.com, 12345)'
-
-    
+def test_representation_user():
+    new_user1 = User("Alina", "Ermakova", "alalina@hmail.com", "123456789lala", 1)
+    assert str(new_user1) == "Alina Ermakova, alalina@hmail.com, 123456789lala"
