@@ -8,18 +8,24 @@ app = Flask(__name__)
 
 # == Your Routes Here ==
 
-# GET /index
+# GET /
 # Returns the homepage
-# Try it:
-#   ; open http://localhost:5000/index
-@app.route('/index', methods=['GET'])
+@app.route('/', methods=['GET'])
 def get_index():
     return render_template('index.html')
 
+# GET /spaces
+# Returns the spaces page
 @app.route('/spaces', methods=['GET'])
 def get_spaces():
     return render_template('spaces.html')
 
+
+# GET AND POST /login
+    # GET: Returns the login page
+    # POST: 
+        # - if login is valid, redirects to spaces page
+        # - if login is invalid, redirects to login page, and displays an error
 @app.route('/login', methods=['GET', 'POST'])
 def get_login():
     if request.method == 'GET':
@@ -30,35 +36,14 @@ def get_login():
         email_address = request.form["email_address"]
         user_password = request.form["user_password"]
         login_status = repository.validate_login(email_address, user_password)
-        if login_status == True:
+        if login_status:
             return redirect('/spaces')
         else:
-            return redirect('/login')
-    
-# @app.route('/', methods=['GET', 'POST'])
-# def index():
-#     if request.method == 'GET':
-#         return "This is a GET request"
-#     elif request.method == 'POST':
-#         return "This is a POST request"
-    
-    
-
-
-# @app.route('/spaces', methods=['GET','POST'])
-# def  get_spaces_if_login_successful():
-#     connection = get_flask_database_connection(app)
-#     repository = UserRepository(connection)
-#     email_address = request.form["Email Address"]
-#     user_password = request.form["Password"]
-#     login_status = repository.validate_login(email_address, user_password)
-#     if login_status == True:
-#         return redirect('/spaces')
-
+            return render_template("login.html", error="Please submit valid login.")
 
 
 # These lines start the server if you run this file directly
 # They also start the server configured to use the test database
 # if started in test mode.
 if __name__ == '__main__':
-    app.run(debug=True, port=int(os.environ.get('PORT', 5000)))
+    app.run(debug=True, port=int(os.environ.get('PORT', 8000)))

@@ -13,8 +13,3 @@ class UserRepository():
             return True 
         else: 
             return False
-        # print('email address: {0}, password: {1}'.format(email_address, user_password))
-
-        #brackets in sql query (%s ) don't work when manually ran through tableplus
-
-        type()
