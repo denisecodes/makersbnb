@@ -13,11 +13,32 @@ app = Flask(__name__)
 
 # == Your Routes Here ==
 
-# GET /index
+# GET /
 # Returns the homepage
 @app.route('/', methods=['GET'])
 def get_index():
     return render_template('index.html')
+
+
+# GET AND POST /login
+    # GET: Returns the login page
+    # POST: 
+        # - if login is valid, redirects to spaces page
+        # - if login is invalid, redirects to login page, and displays an error
+@app.route('/login', methods=['GET', 'POST'])
+def get_login():
+    if request.method == 'GET':
+        return render_template('login.html')
+    elif request.method == 'POST':
+        connection = get_flask_database_connection(app)
+        repository = UserRepository(connection) 
+        email_address = request.form["email_address"]
+        user_password = request.form["user_password"]
+        login_status = repository.validate_login(email_address, user_password)
+        if login_status:
+            return redirect('/spaces')
+        else:
+            return render_template("login.html", error="Please submit valid login.")
 
 @app.route('/sign_up', methods=['GET'])
 def get_sign_up():

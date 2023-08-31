@@ -1,6 +1,6 @@
 from lib.user import *
 
-"""
+"""   
 Initiallizing new user
 """
 

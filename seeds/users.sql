@@ -7,9 +7,10 @@ CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(255),
     last_name VARCHAR(255),
-    email_address VARCHAR(255),
+    email_address VARCHAR(255), 
     user_password VARCHAR(255)
 );
+
 -- Finally, we add any records that are needed for the tests to run
 INSERT INTO users (first_name, last_name, email_address, user_password) VALUES ('Ellie', 'Priestley', 'email1@gmail.com', '12345');
 INSERT INTO users (first_name, last_name, email_address, user_password) VALUES ('Emily', 'Cowan', 'email2@gmail.com', '56irf');

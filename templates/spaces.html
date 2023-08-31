@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
- <meta charset="utf-8" />
-     <head>
-         <title>MakersBnB</title>
+<meta charset="utf-8" />
+    <head>
+        <title>MakersBnB</title>
 
-     </head>
-     <body>
-         <a class="link link_spaces" href="/spaces">Spaces</a> | <a class="link link_requests" href="/requests">Requests</a> | <a class="link link_homepage" href="/">Sign out</a> 
-         <h1 style="font-size: 46px;">Spaces</h1>
-         <button type="button"><a href="/spaces/new">List a new space</a></button>
-         <ul>
+    </head>
+    <body>
+        <a class="link link_spaces" href="/spaces">Spaces</a> | <a class="link link_requests" href="/requests">Requests</a> | <a class="link link_homepage" href="/">Sign out</a> 
+        <h1 style="font-size: 46px;">Spaces</h1>
+        <button type="button"><a href="/spaces/new">List a new space</a></button>
+        <ul>
             {% for space in spaces %}
                 <li>
                     <p style="font-size: 25px;">{{space.title}}</p>
@@ -18,6 +18,6 @@
                     <p>{{space.email_address}}</p>
                 </li>
             {% endfor %}
-         </ul>
-     </body>
+        </ul>
+    </body>
 </html>
