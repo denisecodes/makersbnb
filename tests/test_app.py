@@ -37,7 +37,7 @@ Test that when user logs in incorrectly, an error message appears
 def test_incorrect_login(db_connection, page, test_web_address):
     db_connection.seed('seeds/users.sql')
     page.goto(f"http://{test_web_address}/login")
-    page.fill("input[name=email_address]", 'random')
+    page.fill("input[name=email_address]", 'random@random.com')
     page.fill("input[name=user_password]", 'random')
     page.click("text='Click here to login'")
     invalid_login_error = page.locator(".login_error")
