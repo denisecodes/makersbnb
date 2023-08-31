@@ -53,7 +53,7 @@ def test_post_new_space(page, test_web_address, db_connection):
     page.fill("input[name='title']", "test title")
     page.fill("input[name='description']", "test description")
     page.fill("input[name='price_per_night']", "111")
-    page.fill("input[name='email_address']", "test email")
+    page.fill("input[name='email_address']", "test@email.com")
     page.fill("input[name='user_id']", "1")
     page.click("text=List my space")
     spaces_header_tag = page.locator("h1")
