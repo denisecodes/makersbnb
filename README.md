@@ -92,4 +92,4 @@ pytest
 
 ## 🫶 Special Thanks
 [Makers](https://www.makers.tech/) for giving us the opportunity to work on this cool project on our journey into tech. <br>
-Our coaches [Hunor]("https://github.com/tamasmagyarhunor-makers") and [Leo]("https://github.com/leoht") for guiding and teaching us throughout the project!
+Our coaches [Hunor](https://github.com/tamasmagyarhunor-makers) and [Leo](https://github.com/leoht) for guiding and teaching us throughout the project!
