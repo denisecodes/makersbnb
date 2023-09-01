@@ -14,6 +14,8 @@ class BookingsRepository:
             for row in list_of_space_id:
                 final_list.append(row['spaces_id'])
             return final_list
+            
+            # This was the previous code before implementing changes to account for multiple spaces booked in one month
             """return space_id[0]['spaces_id']"""
 
     def find_available_spaces(self, month):
@@ -33,6 +35,7 @@ class BookingsRepository:
                 spaces.append(item)
             return spaces
             
+            # This was the previous code before implementing changes to account for multiple spaces booked in one month
             """rows = self._connection.execute('SELECT DISTINCT (spaces.id), spaces.title, spaces.description, spaces.email_address, spaces.price_per_night, spaces.user_id FROM spaces FULL OUTER JOIN bookings ON spaces.id = bookings.spaces_id WHERE spaces.id != %s ORDER BY spaces.id', [space_id])
             for row in rows:
                 item = Spaces(row['id'], row['title'], row['description'], row['email_address'], row['price_per_night'], row['user_id'])
