@@ -6,6 +6,8 @@ from lib.user_repository import UserRepository
 from lib.user_parameters_validator import UserParametersValidator
 from lib.spaces import Spaces
 from lib.spaces_repository import SpacesRepository
+from lib.bookings import Bookings
+from lib.bookings_repository import BookingsRepository
 
 
 # Create a new Flask app
@@ -85,7 +87,15 @@ def get_spaces():
     connection = get_flask_database_connection(app)
     repository = SpacesRepository(connection)
     spaces = repository.all()
-    return render_template('spaces.html', spaces=spaces)
+    return render_template('spaces.html', available_spaces=None, spaces=spaces)
+
+@app.route('/spaces', methods=['POST'])
+def get_available_spaces():
+    connection = get_flask_database_connection(app)
+    repository = BookingsRepository(connection)
+    month_to_book = request.form['month']
+    available_spaces = repository.find_available_spaces(month_to_book)
+    return render_template('spaces.html', available_spaces=available_spaces, spaces=None)
 
 @app.route('/spaces/new', methods=['GET'])
 def get_list_space_page():

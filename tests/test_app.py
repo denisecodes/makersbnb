@@ -25,9 +25,7 @@ def test_correct_login(db_connection, page, test_web_address):
     page.fill("input[name=email_address]", 'email1@gmail.com')
     page.fill("input[name=user_password]", '12345')
     page.click("text='Click here to login'")
-    spaces_page = page.locator(".spaces_page_title")
-    print(page.content())
-    print(page.url)
+    spaces_page = page.locator("h1")
     expect(spaces_page).to_have_text("Spaces")
 
 
