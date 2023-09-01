@@ -39,8 +39,13 @@ After the dependencies have been installed, run pipenv shell to start the virtua
 ```
 pipenv shell
 ```
+Create the database <b>makers_bnb</b> for development mode.
 
-Then add the tables to your computer in a database called <b>makers_bnb</b>.
+``` 
+createdb makers_bnb
+```
+
+Then add the tables locally to the makers_bnb database.
 
 ``` 
 python seed_dev_database.py
@@ -77,8 +82,13 @@ Run pipenv shell to start the virtual environment.
 ```
 pipenv shell
 ```
+Create the database <b>makers_bnb_test</b> for test mode.
 
-Then add the tables to your computer in a database called <b>makers_bnb_test</b>.
+``` 
+createdb makers_bnb_test
+```
+
+Then add the tables locally to the makers_bnb_test database.
 
 ``` 
 python seed_test_database.py
