@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
- <meta charset="utf-8" />
-     <head>
-         <title>MakersBnB</title>
+<meta charset="utf-8" />
+    <head>
+        <title>MakersBnB/Spaces</title>
 
-     </head>
-     <body>
-         <a class="link link_spaces" href="/spaces">Spaces</a> | <a class="link link_requests" href="/requests">Requests</a> | <a class="link link_homepage" href="/">Sign out</a> 
-         <h1 style="font-size: 46px;">Spaces</h1>
-         <button type="button"><a href="/spaces/new">List a new space</a></button><br><br>
+    </head>
+    <body>
+        <a class="link link_spaces" href="/spaces">Spaces</a> | <a class="link link_requests" href="/requests">Requests</a> | <a class="link link_homepage" href="/">Sign out</a> 
+        <h1 style="font-size: 46px;">Spaces</h1>
+        <button type="button"><a href="/spaces/new">List a new space</a></button><br><br>
 
         <form action="/spaces" method="post">
         <label for="month">Choose a month you would like to book:</label><br> 
@@ -46,11 +46,11 @@
                 <li>
                     <p style="font-size: 25px;">{{space.title}}</p>
                     <p>{{space.description}}</p>
-                    <p><b>£{{space.price_per_night}}</b></p>
+                    <p><b>{{space.price_per_night}}</b></p>
                     <p>{{space.email_address}}</p>
                 </li>
             {% endfor %}
             {% endif %}
-         </ul>
-     </body>
+        </ul>
+    </body>
 </html>
