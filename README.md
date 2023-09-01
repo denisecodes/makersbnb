@@ -12,7 +12,7 @@
 * **[Denise Chan](https://github.com/denisecodes)**
 * **[Ellie Priestley](https://github.com/elliepriestley)**
 * **[Emily Cowan](https://github.com/Emily-RC)**
-* **[Mohsin](https://github.com/M-Mohsin-H)**
+* **[Mohsin Hafesji](https://github.com/M-Mohsin-H)**
 
 ## 🚀 Tech stack
 
