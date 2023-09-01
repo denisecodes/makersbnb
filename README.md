@@ -21,37 +21,36 @@
 
 ## 💻 Running the project
 
-Clone the project to your local machine.
+<b>Clone the project to your local machine.</b>
 
 ```
 git clone https://github.com/denisecodes/makersbnb.git
 ```
 
-Run pipenv install to install all the dependencies.
+<b>Run pipenv install to install all the dependencies.</b>
 
 ```
 pipenv install
 ```
-This will install all of the dependencies required for this to run smoothly.
 
-After the dependencies have been installed, run pipenv shell to start the virtual environment.
+<b>Run pipenv shell to start the virtual environment.</b>
 
 ```
 pipenv shell
 ```
-Create the database <b>makers_bnb</b> for development mode.
+<b>Create the database <i>makers_bnb</i> for development mode.</b>
 
 ``` 
 createdb makers_bnb
 ```
 
-Then add the tables locally to the makers_bnb database.
+<b>Then add the tables locally to the makers_bnb database.</b>
 
 ``` 
 python seed_dev_database.py
 ```
 
-Run the app locally in the shell.
+<b>Run the app locally in the shell.</b>
 
 ```
 python app.py
@@ -65,36 +64,36 @@ Now visit http://localhost:8000/ to see the app
 If you are interested to see our tests and run them locally
 
 
-Run pipenv install to install all the dependencies.
+<b>Run pipenv install to install all the dependencies.</b>
 
 ```
 pipenv install
 ```
 
-Install the playwright library to run the tests.
+<b>Install the playwright library to run the tests.</b>
 
 ```
 playwright install
 ```
 
-Run pipenv shell to start the virtual environment.
+<b>Run pipenv shell to start the virtual environment.</b>
 
 ```
 pipenv shell
 ```
-Create the database <b>makers_bnb_test</b> for test mode.
+<b>Create the database <i>makers_bnb_test</i> for test mode.</b>
 
 ``` 
 createdb makers_bnb_test
 ```
 
-Then add the tables locally to the makers_bnb_test database.
+<b>Then add the tables locally to the makers_bnb_test database.</b>
 
 ``` 
 python seed_test_database.py
 ```
 
-Run the tests in your terminal.
+<b>Run the tests in your terminal.</b>
 
 ```
 pytest
