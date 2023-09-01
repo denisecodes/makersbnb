@@ -4,52 +4,33 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Makersbnb - Sign Up</title>
-        <style type="text/css">
-            /** This is CSS, it is used for styling the page **/
-            body {
-                background-color: white;
-                color: darkolivegreen;
-                font-size: 1.5em;
-                margin: 2rem;
-            }
-            form {
-                display: flex;
-                flex-direction: column;
-                max-width: 15em;
-            }
-            input {
-                padding: 4px;
-                margin: 10px;
-            }
-            label {
-                padding-left: 15px;
-                font-size: 1em;
-            }
-            .t-errors {
-                color: red;
-                font-size: .7em;
-            }
-        </style>
+        <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/styles.css') }}">
     </head>
     <body>
-        <h1>Sign Up to MakersBnB</h1>
-        <form action="/sign_up" method="POST">
-            {% if errors %}
-                <p class="t-errors">
-                    Your submission contains errors:
-                    {{ errors | join(', ') }}
-                </p>
-            {% endif %}
-            <label for="first_name">First Name</label>
-            <input minlength="3" maxlength="20" placeholder="example: Jane" type="text" name="first_name" id="first_name">
-            <label for="last_name">Last Name</label>
-            <input minlength="3" maxlength="20" placeholder="example: Doe" type="text" name="last_name" id="last_name">
-            <label for="email_address">Email Address</label>
-            <input placeholder="example: jane.doe@example.com" type="email" name="email_address" id="email_address">
-            <label for="user_password">Password</label>
-            <input minlength="5" maxlength="20" type="password" name="user_password" id="user_password">
+        <a class="link link_homepage" href="/">Home</a> | <a class="link link_login" href="/login">Login</a> | <a class="link link_sign_up" href="/sign_up">Sign Up</a>
+        <div class="wrapper">
+            <h1 class="title">Sign Up to MakersBnB</h1>
+            <form class="card__form" action="/sign_up" method="POST">
+                {% if errors %}
+                    <div class="notifications-container">
+                        <div class="error-alert">
+                            <svg aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="error-svg">
+                                <path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" fill-rule="evenodd"></path>
+                            </svg>
+                            <p class="t-errors">
+                                Your submission contains errors:
+                                {{ errors | join(', ') }}
+                            </p>
+                        </div>
+                    </div>
+                {% endif %}
+                <input class="card__input" minlength="3" maxlength="20" placeholder="example: Jane" type="text" name="first_name" id="first_name">
+                <input class="card__input" minlength="3" maxlength="20" placeholder="example: Doe" type="text" name="last_name" id="last_name">
+                <input class="card__input" placeholder="example: jane.doe@example.com" type="email" name="email_address" id="email_address">
+                <input placeholder="password" class="card__input" minlength="5" maxlength="20" type="password" name="user_password" id="user_password">
 
-            <input class="button" style="color: white; background-color: darkolivegreen; font-size: 15px;" type="submit" value="Sign Up">
-        </form>
+                <input class="card__btn button" type="submit" value="Click here to Sign Up">
+            </form>
+        </div>
     </body>
 </html>

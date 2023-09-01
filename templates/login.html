@@ -4,29 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/styles.css') }}">
     <title>Login</title>
 </head>
 <body>
-    
-    <h1 class="login_header"> Login </h1>
-    <form class="login_form" action="/login" method="POST">
-        <p>
-            <label>Email Address</label><br>
-            <input type="email" name="email_address">     
-        </p>
-        <p>
-            <label>Password</label><br>
-            <input type="password" name="user_password">
-        </p>
-        
-        <p>
-            <input type="submit" value="Click here to login">
-        </p>
-
-    </form>
-        <p class="login_error">
-            {{error}}
-        </p>
-    
+    <a class="link link_homepage" href="/">Home</a> | <a class="link link_login" href="/login">Login</a> | <a class="link link_sign_up" href="/sign_up">Sign Up</a>
+    <div class="wrapper">
+        <h1 class="login_header title"> Login </h1>
+        <form class="login_form card__form" action="/login" method="POST">
+                <input placeholder="email" class="card__input" type="email" name="email_address">     
+                <input placeholder="password" class="card__input" type="password" name="user_password">
+                <input class="card__btn" type="submit" value="Click here to login">
+        </form>
+        {% if error %}
+            <div class="notifications-container">
+                <div class="error-alert">
+                    <p class="login_error t-errors">
+                        <svg aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="error-svg">
+                            <path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" fill-rule="evenodd"></path>
+                        </svg>
+                        {{error}}
+                    </p>
+                </div>
+            </div>
+        {% endif %}
+    </div>
 </body>
 </html>

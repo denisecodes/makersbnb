@@ -3,54 +3,60 @@
 <meta charset="utf-8" />
     <head>
         <title>MakersBnB/Spaces</title>
-
+        <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/styles.css') }}">
     </head>
     <body>
         <a class="link link_spaces" href="/spaces">Spaces</a> | <a class="link link_requests" href="/requests">Requests</a> | <a class="link link_homepage" href="/">Sign out</a> 
-        <h1 style="font-size: 46px;">Spaces</h1>
-        <button type="button"><a href="/spaces/new">List a new space</a></button><br><br>
+        <div class="wrapper">
+            <h1 class="title" style="font-size: 46px;">Spaces</h1>
+            <button style="border: none; background-color: white" type="button"><a class="card__btn"  href="/spaces/new">List a new space</a></button><br><br>
 
-        <form action="/spaces" method="post">
-        <label for="month">Choose a month you would like to book:</label><br> 
-            <select name="month" id="month"> 
-                <option value="January">January</option> 
-                <option value="February">February</option> 
-                <option value="March">March</option> 
-                <option value="April">April</option>
-                <option value="May">May</option> 
-                <option value="June">June</option> 
-                <option value="July">July</option> 
-                <option value="August">August</option> 
-                <option value="September">September</option> 
-                <option value="October">October</option> 
-                <option value="November">November</option> 
-                <option value="December">December</option> 
-            </select>
-            <input type="submit" value="Search">
-        </form>
+            <form action="/spaces" method="post">
+            <p class="title-select" for="month">Choose a month you would like to book:</p><br> 
+                <div class="select-wrapper">
+                    <div class="select-dropdown">
+                        <select name="month" id="month"> 
+                            <option value="January">January</option> 
+                            <option value="February">February</option> 
+                            <option value="March">March</option> 
+                            <option value="April">April</option>
+                            <option value="May">May</option> 
+                            <option value="June">June</option> 
+                            <option value="July">July</option> 
+                            <option value="August">August</option> 
+                            <option value="September">September</option> 
+                            <option value="October">October</option> 
+                            <option value="November">November</option> 
+                            <option value="December">December</option> 
+                        </select>
+                    </div>
+                    <input class="btn card__btn" type="submit" value="Search">
+                </div>
+            </form>
 
-        <ul>
-            {% if available_spaces %}
-            {% for space in available_spaces %}
-                <li>
-                    <p style="font-size: 25px;">{{space.title}}</p>
-                    <p>{{space.description}}</p>
-                    <p><b>£{{space.price_per_night}}</b></p>
-                    <p>{{space.email_address}}</p>
-                </li>
-            {% endfor %}
-            {% endif %}
+            <ul class="spaces">
+                {% if available_spaces %}
+                {% for space in available_spaces %}
+                    <li class="card">
+                        <p class="card-title">{{space.title}}</p>
+                        <p class="card-body">{{space.description}}</p>
+                        <p class="card-body"><b>£{{space.price_per_night}}</b>per/night</p>
+                        <p class="card-footer">{{space.email_address}}</p>
+                    </li>
+                {% endfor %}
+                {% endif %}
 
-            {% if spaces %}
-            {% for space in spaces %}
-                <li>
-                    <p style="font-size: 25px;">{{space.title}}</p>
-                    <p>{{space.description}}</p>
-                    <p><b>{{space.price_per_night}}</b></p>
-                    <p>{{space.email_address}}</p>
-                </li>
-            {% endfor %}
-            {% endif %}
-        </ul>
+                {% if spaces %}
+                {% for space in spaces %}
+                    <li class="card">
+                        <p class="card-title" style="font-size: 25px;">{{space.title}}</p>
+                        <p class="card-body">{{space.description}}</p>
+                        <p class="card-body"><b>{{space.price_per_night}}</b> per/night</p>
+                        <p class="card-footer">{{space.email_address}}</p>
+                    </li>
+                {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
     </body>
 </html>
