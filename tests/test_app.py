@@ -70,8 +70,8 @@ def test_go_to_sign_up(page, test_web_address, db_connection):
     page.fill("input[name='email_address']", "denise@gmail.com")
     page.fill("input[name='user_password']", "12345")
     
-    page.click("text='Sign Up'")
-    strong_tag = page.locator(".homepage")
+    page.click("text='Click here to Sign Up'")
+    strong_tag = page.locator(".title")
     expect(strong_tag).to_have_text("This is the homepage.")
     row = db_connection.execute("SELECT * FROM users ORDER BY id DESC LIMIT 1")
     user = row[0]
@@ -85,7 +85,7 @@ def test_validate_user(page, test_web_address, db_connection):
     db_connection.seed('seeds/users.sql')
     page.goto(f"http://{test_web_address}/sign_up")
 
-    page.click("text='Sign Up'")
+    page.click("text='Click here to Sign Up'")
 
     errors_tag = page.locator(".t-errors")
     expect(errors_tag).to_have_text(
@@ -116,7 +116,7 @@ def test_get_spaces(page, test_web_address):
 def test_get_requests(page, test_web_address):
     page.goto(f"http://{test_web_address}/spaces")
     page.click("text=Requests")
-    info_tag = page.locator("p")
+    info_tag = page.locator(".title-request")
     expect(info_tag).to_have_text("This is the requests page.")   
 
 def test_get_sign_out(page, test_web_address):

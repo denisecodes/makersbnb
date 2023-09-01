@@ -3,38 +3,25 @@
 <meta charset="utf-8" />
     <head>
         <title>MakersBnB</title>
-
+        <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/styles.css') }}">
     </head>
     <body>
         <a class="link link_spaces" href="/spaces">Spaces</a> | <a class="link link_requests" href="/requests">Requests</a> | <a class="link link_homepage" href="/">Sign out</a> 
-        <h1>List your space</h1>
-        <form action="/spaces/new" method="post">
-            <p>
-                <label for="title">Title:</label><br>
-                <input type="text" name="title" id="title">
-            </p>
+        <div class="wrapper">
+            <h1 class="title">List your space</h1>
+            <form class="card__form" action="/spaces/new" method="post">
+                    <input placeholder="Title" class="card__input" type="text" name="title" id="title">
 
-            <p>
-                <label for="description">Description:</label><br>
-                <input type="text" name="description" id="description" style="width: 100mm;">
-            </p>
+                    <input placeholder="Description" class="card__input" type="text" name="description" id="description">
 
-            <p>
-                <label for="price">Price Per Night:</label><br>
-                <input type="number" name="price_per_night" id="price">
-            </p>
-
-            <p>
-                <label for="email">Email Address:</label><br>
-                <input type="email" name="email_address" id="email_address">
-            </p>
-
-            <p>
-                <label for="user_id">User ID</label><br>
-                <input type="number" name="user_id" id="user_id">
-            </p>
-
-            <input type="submit" value="List my space">
-        </form>
+                    <input placeholder="Price Per Night" class="card__input" type="number" name="price_per_night" id="price">
+                
+                    <input placeholder="Email Address:" class="card__input" type="email" name="email_address" id="email_address">
+                
+                    <input placeholder="User ID" class="card__input" type="number" name="user_id" id="user_id">
+                
+                <input class="card__btn" type="submit" value="List my space">
+            </form>
+        </div>
     </body>
 </html>
